@@ -6,7 +6,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import Button from '@material-ui/core/Button'
+import Button from '@material-ui/core/Button';
 
 const CustomerList = (props) => {
   const [toggleBid, setToggleBid] = useState(false);
@@ -37,6 +37,11 @@ const CustomerList = (props) => {
     }
   }
 
+
+  const moveToDetails = (customer) => {
+    props.history.push(`/customer/details/${customer.id}`, { customer })
+  }
+
   const getMinimumBid = (bid) => {
 
     if(!bid.length){
@@ -59,7 +64,7 @@ const CustomerList = (props) => {
 
   const renderToggleText = () => {
     if(toggleBid){
-      return 'Show Maximun';
+      return 'Show Maximum';
     }
     return 'Show Minimum';
   }
@@ -83,7 +88,7 @@ const CustomerList = (props) => {
           </TableHead>
           <TableBody>
             {customerList.map((customer) => (
-              <TableRow key={customer.id}>
+              <TableRow key={customer.id} onClick={() => moveToDetails(customer)} hover>
                 <TableCell component="th" scope="row">
                   {`${customer.firstname} ${customer.lastname}`}
                 </TableCell>

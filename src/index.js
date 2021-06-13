@@ -1,10 +1,10 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
 
-import App from './app';
+import createRoutes from './Routes';
 
+const routes = createRoutes();
 
 ReactDOM.render(
-    <App />,
+  routes,
   document.querySelector('#root')
 )

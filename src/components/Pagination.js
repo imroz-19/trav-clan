@@ -4,7 +4,7 @@ import ButtonGroup from '@material-ui/core/ButtonGroup';
 
 const Pagination = (props) => {
   const { listsPerPage, totalList} = props;
-  const totalPage = Math.floor(totalList/listsPerPage);
+  const totalPage = Math.ceil(totalList/listsPerPage);
   const pageNumbers = [];
 
   for(let i =1; i<=totalPage; i++){
@@ -14,7 +14,7 @@ const Pagination = (props) => {
     <ButtonGroup variant="text" color="primary" aria-label="text primary button group">
       {
         pageNumbers.map(page => {
-        return  <Button onClick={() => props.onPageChange(page)}>{page}</Button>
+        return  <Button key={page} onClick={() => props.onPageChange(page)}>{page}</Button>
         })
       }
     </ButtonGroup>

@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
+
 import getList from './services/customers';
 
 import CustomersList from './components/CustomersList';
 import Pagination from './components/Pagination';
 
-const App = () => {
+const App = (props) => {
   const [customerList, setCustomerList] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [listPerPage] = useState(4);
@@ -26,7 +27,7 @@ const App = () => {
 
   return(
     <div>
-      <CustomersList customerList={currentLists}/>
+      <CustomersList customerList={currentLists} history={props.history}/>
       <Pagination  
         listsPerPage={listPerPage} 
         totalList={customerList.length}
